@@ -1,0 +1,10 @@
+[
+    {
+        "Alert": "Alerted",
+        "Command": "uname -a",
+        "Instruction": "\nglobal var\nglobal res\nvar = var.split(\" \")\nprint(var)\n    ",
+        "Name": "Check the system data",
+        "Parent": "var1",
+        "Ver": "6.7"
+    }
+]
