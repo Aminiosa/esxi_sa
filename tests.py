@@ -15,14 +15,22 @@ def createConfig(path):
     config.set("Settings", "font_info",
                "You are using %(font)s at %(font_size)s pt")
 
-    with open(path, "w") as config_file:
+    with open(path, "a") as config_file:
         config.write(config_file)
 
 def createjson(path):
+
     section0 = {"Name": "Check the system data",
+    "Ver": "6.7",
     "Command": "uname -a",
-    "Action": """""",
-    "Alert": "Alerted"
+    "Instruction": """
+global var
+global res
+var = var.split(" ")
+print(var)
+    """,
+    "Alert": "Alerted",
+    "Parent": "var1"
     }
     section1 = {"Name": "Named1",
     "Command": "commanded",
@@ -32,10 +40,18 @@ def createjson(path):
     jsontouple = []
     jsontouple.append(section0)
     jsontouple.append(section1)
+    try:
+        jsonfile = open(path, mode="w", encoding="utf-8")
+        json.dump(jsontouple, jsonfile, sort_keys=True, indent=4)
+        jsonfile.close()
+    except:
+        try:
+            jsonfile = open(path, mode="w", encoding="utf-8")
+            json.dump(jsontouple, jsonfile, sort_keys=True, indent=4)
+            jsonfile.close()
+        except:
+            print("Can't open/create config file file")
 
-    jsonfile = open(path, mode="w", encoding="utf-8")
-    json.dump(jsontouple, jsonfile)
-    jsonfile.close()
 
 def parsJson(path):
     file = open(path, mode="r", encoding='utf-8')
@@ -76,6 +92,6 @@ print(var)
 if __name__ == "__main__":
     path = "settings.json"
     #createConfig(path)
-    #createjson(path)
+    createjson(path)
     #parsJson(path)
-    executor()
+    #executor()

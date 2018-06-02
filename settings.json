@@ -1,1 +1,19 @@
-[{"Name": "Named0", "Command": "commanded", "Action": ["Action1", "Action2"], "Alert": "Alerted"}, {"Name": "Named1", "Command": "commanded", "Action": ["Action1", "Action2"], "Alert": "Alerted"}]
+[
+    {
+        "Alert": "Alerted",
+        "Command": "uname -a",
+        "Instruction": "\nglobal var\nglobal res\nvar = var.split(\" \")\nprint(var)\n    ",
+        "Name": "Check the system data",
+        "Parent": "var1",
+        "Ver": "6.7"
+    },
+    {
+        "Action": [
+            "Action1",
+            "Action2"
+        ],
+        "Alert": "Alerted",
+        "Command": "commanded",
+        "Name": "Named1"
+    }
+]
