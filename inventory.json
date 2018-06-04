@@ -2,9 +2,10 @@
     {
         "Alert": "Alerted",
         "Command": "uname -a",
-        "Instruction": "\nglobal var\nglobal res\nvar = var.split(\" \")\nprint(var)\n    ",
-        "Name": "Check the system data",
-        "Parent": "var1",
+        "Instruction": "\nglobal var\nglobal version, sName\nglobal res\nvar = var.split(\" \")\nsName = var[1]\nversion = var[2]\nvar=var[1]",
+        "Msg": "Getting name of server",
+        "Name": "Name of server",
+        "Parent": "NULL",
         "Ver": "6.7"
     }
 ]

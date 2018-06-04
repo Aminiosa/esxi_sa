@@ -1,5 +1,7 @@
 import configparser
 import json
+from distutils.version import LooseVersion
+
 import sys
 
 
@@ -92,6 +94,12 @@ print(var)
 if __name__ == "__main__":
     path = "settings.json"
     #createConfig(path)
-    createjson(path)
+    #createjson(path)
     #parsJson(path)
     #executor()
+    print(LooseVersion('6.4.0') < LooseVersion('6.5'))
+    j=[]
+    j=['jhonny', 'anny', 'benny']
+    b=['ziga']
+    b.extend(j)
+    print(b)
