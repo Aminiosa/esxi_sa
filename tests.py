@@ -1,4 +1,4 @@
-import configparser
+import configparser, time
 import json
 from distutils.version import LooseVersion
 
@@ -39,20 +39,17 @@ print(var)
     "Action": ["Action1", "Action2"],
     "Alert": "Alerted"
     }
-    jsontouple = []
-    jsontouple.append(section0)
-    jsontouple.append(section1)
-    try:
-        jsonfile = open(path, mode="w", encoding="utf-8")
-        json.dump(jsontouple, jsonfile, sort_keys=True, indent=4)
-        jsonfile.close()
-    except:
-        try:
-            jsonfile = open(path, mode="w", encoding="utf-8")
-            json.dump(jsontouple, jsonfile, sort_keys=True, indent=4)
-            jsonfile.close()
-        except:
-            print("Can't open/create config file file")
+    section1["another"] = section0
+    section1["another"]['Command']={"name":"gure"}
+    jsontouple = section1
+
+
+    print(jsontouple['another']['Command'])
+    #jsontouple["another"] = {"sig":1}
+
+    jsonfile = open(path, mode="w", encoding="utf-8")
+    json.dump(jsontouple, jsonfile, sort_keys=True, indent=4)
+    jsonfile.close()
 
 
 def parsJson(path):
@@ -92,14 +89,38 @@ print(var)
 
 
 if __name__ == "__main__":
-    path = "settings.json"
+    path = "settings1.json"
     #createConfig(path)
-    #createjson(path)
+    createjson(path)
     #parsJson(path)
+    print(time.ctime(time.time()))
     #executor()
-    print(LooseVersion('6.4.0') < LooseVersion('6.5'))
-    j=[]
-    j=['jhonny', 'anny', 'benny']
-    b=['ziga']
-    b.extend(j)
-    print(b)
+    #jcob={'Nma':'zuba'}
+    #jcob.setdefault('addres', {})
+    #jcob['addres'].setdefault('Nma',{})
+    #jcob['addres']['Nma'].setdefault('zzma',{})
+    #jcob['addres']['shmaddress']={'buuble':'mubble'}
+    #print(jcob)
+    #jReport={}
+    #jReport.setdefault('esxi', {})
+    #com = "jReport['esxi'].setdefault('big', {})"
+    #exec(com)
+    #print(jReport
+    # )
+    """
+    oParent = ['good', 'bad', 'normal']
+    jReport = {"Name":'goot'}
+    for item in oParent:
+        jReport[item]={}
+        temp = temp
+    """
+    items = ['good', 'bad', 'normal']
+
+    struct = {}
+    temp = struct
+    for item in items:
+        if item not in temp:
+            temp[item] = {}
+        temp = temp[item]
+    print(temp)
+    print(struct)
