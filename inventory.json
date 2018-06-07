@@ -1,13 +1,24 @@
 [
-    {
-        "Alert": "Alerted",
-        "Command": "uname -a",
-        "Instruction": "\nglobal var, version, sName, jReport\nglobal res\nvar = var.split(\" \")\nsName = var[1]\njReport={sName:sName}\nversion = var[2]\nvar=var[1]",
-        "Msg": "Getting name of server",
-        "Name": "Name of server",
-        "Parent": "big,boss",
-        "Ver": "0",
-        "VerM": "99"
-
-    }
+  {
+    "Alert": "NULL",
+    "Command": "uname -a",
+    "Condition": "NULL",
+    "Instruction": "\nglobal var, version, sName, jReport\nvar = var.split(\" \")\nsName = var[1]\njReport[sName] = {}\nversion = var[2]\nvar=var[1]",
+    "Msg": "Getting name of server",
+    "Name": "Name",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "uname -a",
+    "Instruction": "\nglobal var\nvar = var.split(\" \")\nvar=var[2]",
+    "Condition": "NULL",
+    "Msg": "Getting version of server",
+    "Name": "Version",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99"
+  }
 ]

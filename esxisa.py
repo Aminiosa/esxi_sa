@@ -1,13 +1,11 @@
 import sys
 import paramiko
-import configparser
 import json
 import time
 
 from distutils.version import LooseVersion
 
 def executor(execmd):
-    global jReport
     stdin, stdout, stderr = client.exec_command(str(execmd))
     data = stdout.read() + stderr.read()
     return(data.decode('utf-8'))
@@ -23,13 +21,13 @@ def jParser(path):
     for test in data:
 
         if (version != " "):
-            if (LooseVersion(version) < LooseVersion(test['VerM'])) and (LooseVersion(version) > LooseVersion(test['Ver'])):
+            if (LooseVersion(version) > LooseVersion(test['VerM'])) and (LooseVersion(version) < LooseVersion(test['Ver'])):
                 print("That scrip is't capable with this version. Server version:", version,
                       ", script for:", test['Ver'], "to", test['VerM'])
                 continue
 
         try:
-            print("#Operation: ", test['Name'])
+            print("#Operation: ", test['Msg'])
             var = executor(test['Command'])
         except:
             print("Error while send query to ESXi server")
@@ -44,44 +42,20 @@ def jParser(path):
         curPath.append(sName)
         if test['Parent'] != 'NULL':
             curPath.extend(test['Parent'].split(','))
-        print("Current Path", curPath)
-        print(jReport)
+        if test['Condition'] != "NULL":
+            exec(test['Condition'])
         jCreator(curPath, test['Name'], var)
+        print("...done.")
 
 def jCreator(oParent, oName, oData):
-    print(oParent, oName, oData)
-    global flagFirstIteration, repFile, jReport
-    exeCommand = "jReport"
+    global jReport
     temp = jReport
-    """
     for item in oParent:
-            print(jReport)
-            print("item type:", type(item))
-            print("temp type:", type(temp))
             if item not in temp:
-                print("aha")
                 temp[item] = {}
-                print("temp item type:", type(temp))
             temp = temp[item]
-            exeCommand = exeCommand + '[\'' + item + '\']'
-    
-
-    exeCommand = "\nglobal jReport\n" + exeCommand + ' = {\'' + oName + '\' : \'' + oData + '\'}'
-    exec(exeCommand)"""
-    print("jReport: ", jReport)
-    '''
-    if flagFirstIteration = 0:
-        try:
-            with open(rPath, mode="w", encoding='utf-8') as repFile:
-                json.dump()
-        except:
-            print("Can not create report file:",rPath)
-            client.close()
-            exit(1)
-        flagFirstIteration = 1
-    else:
-    '''
-
+            if item == oParent[-1]:
+                temp[oName] = oData
 
 if __name__ == "__main__":
     print("enter the password:")
@@ -95,8 +69,7 @@ if __name__ == "__main__":
     global sName, version, rPath, flagFirstIteration, jReport
     flagFirstIteration = 0
     version = " "
-    jReport = {"ReportData": time.ctime(time.time())}
-    print(jReport)
+    jReport = {"ReportDate": time.ctime(time.time())}
     rPath='report.json' #path to report
     invCfgFile = 'inventory.json' #inventory file
 
