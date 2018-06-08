@@ -5,7 +5,7 @@
     "Condition": "NULL",
     "Instruction": "\nglobal var, version, sName, jReport\nvar = var.split(\" \")\nsName = var[1]\njReport[sName] = {}\nversion = var[2]\nvar=var[1]",
     "Msg": "Getting name of server",
-    "Name": "Name",
+    "Name": "Host Name",
     "Parent": "NULL",
     "Ver": "0",
     "VerM": "99"
@@ -19,6 +19,28 @@
     "Name": "Version",
     "Parent": "NULL",
     "Ver": "0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "cat /etc/passwd | sed 's/\\:[^:]*:[^:]*:[^:]//' | sed 's/\\:\\/.*//'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting System users and groups",
+    "Name": "System Users : DefaultGroup",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "esxcli system account list | sed 1,2d | sed 's/[ ]\\+/\\:/'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting ESXi users and note",
+    "Name": "ESXi User : Description",
+    "Parent": "NULL",
+    "Ver": "6.0",
     "VerM": "99"
   }
 ]

@@ -1,7 +1,21 @@
 {
-    "ReportDate": "Thu Jun  7 11:21:39 2018",
+    "ReportDate": "Fri Jun  8 13:59:28 2018",
     "esxi": {
-        "Name": "esxi",
+        "ESXi User : Description": {
+            "dcui": "DCUI User",
+            "nmokh": "Administrator",
+            "root": "Administrator",
+            "vpxuser": "VMware VirtualCenter administration account"
+        },
+        "Host Name": "esxi",
+        "System Users : DefaultGroup": {
+            "daemon": "System daemons",
+            "dcui00": "DCUI User",
+            "nfsnobody5534": "Anonymous NFS User",
+            "nmokh000": "Administrator",
+            "root": "Administrator",
+            "vpxuser00": "VMware VirtualCenter administration account"
+        },
         "Version": "6.7.0"
     }
 }

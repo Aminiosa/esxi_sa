@@ -33,11 +33,11 @@ def jParser(path):
             print("Error while send query to ESXi server")
             continue
 
-        try:
-            exec(test['Instruction'])
-        except:
-            print("Can't execute the instructions")
-            continue
+        #try:
+        exec(test['Instruction'])
+        #except:
+        #    print("Can't execute the instructions")
+         #   continue
         curPath = []
         curPath.append(sName)
         if test['Parent'] != 'NULL':
