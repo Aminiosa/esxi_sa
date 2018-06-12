@@ -2,8 +2,15 @@ import sys
 import paramiko
 import json
 import time
-
 from distutils.version import LooseVersion
+
+import atexit
+
+from pyVim import connect
+from pyVmomi import vmodl
+from pyVmomi import vim
+
+
 
 def executor(execmd):
     stdin, stdout, stderr = client.exec_command(str(execmd))
@@ -71,7 +78,7 @@ if __name__ == "__main__":
     version = " "
     jReport = {"ReportDate": time.ctime(time.time())}
     rPath='report.json' #path to report
-    invCfgFile = 'inventory.json' #inventory file
+    invCfgFile = 'inventory1.json' #inventory file
 
     try:
         client = paramiko.SSHClient()

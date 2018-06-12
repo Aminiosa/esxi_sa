@@ -1,21 +1,128 @@
 {
-    "ReportDate": "Fri Jun  8 13:59:28 2018",
+    "ReportDate": "Mon Jun 11 18:33:20 2018",
     "esxi": {
+        "All VMs": {
+            "File": "tester/tester.vmx",
+            "Guest": "winVista64Guest",
+            "Name": "tester",
+            "Version": "vmx-14",
+            "Vmid": "1"
+        },
+        "DNS list": [
+            "8.8.8.8",
+            "8.4.4.4"
+        ],
+        "Deamons' status": {
+            "DCUI": "on",
+            "ESXShell": "off",
+            "SSH": "on",
+            "cdp": "on",
+            "clomd": "off",
+            "cmmdsTimeMachine": "off",
+            "cmmdsd": "off",
+            "dcbd": "on",
+            "ddecomd": "off",
+            "epd": "off",
+            "esxui": "on",
+            "hostd": "on",
+            "hostdCgiServer": "on",
+            "iofilterd-spm": "on",
+            "iofilterd-vmwarevmcrypt": "on",
+            "iofiltervpd": "off",
+            "lacp": "on",
+            "lbtd": "on",
+            "lwsmd": "off",
+            "memscrubd": "on",
+            "nfcd": "on",
+            "nfsgssd": "off",
+            "nicmgmtd": "on",
+            "nscd": "on",
+            "ntpd": "off",
+            "osfsd": "off",
+            "pcscd": "off",
+            "rabbitmqproxy": "on",
+            "rhttpproxy": "on",
+            "sdrsInjector": "on",
+            "sensord": "on",
+            "sfcbd-watchdog": "on",
+            "slpd": "on",
+            "smartd": "on",
+            "snmpd": "on",
+            "storageRM": "on",
+            "swapobjd": "on",
+            "usbarbitrator": "on",
+            "vit_loader": "off",
+            "vitd": "off",
+            "vmfstraced": "on",
+            "vmsyslogd": "on",
+            "vmtoolsd": "on",
+            "vobd": "on",
+            "vpxa": "on",
+            "vsanObserver": "off",
+            "vsandevicemonitord": "off",
+            "vsanmgmtd": "off",
+            "vsantraced": "off",
+            "vvold": "on",
+            "wsman": "on",
+            "xorg": "on"
+        },
         "ESXi User : Description": {
             "dcui": "DCUI User",
             "nmokh": "Administrator",
             "root": "Administrator",
             "vpxuser": "VMware VirtualCenter administration account"
         },
+        "ESXi User : Role": {
+            "dcui": "Admin",
+            "root": "Admin",
+            "vpxuser": "Admin"
+        },
         "Host Name": "esxi",
+        "IP Interface": {
+            "   Enabled": " true",
+            "   External ID": " N/A",
+            "   MAC Address": " 00",
+            "   MTU": " 1500",
+            "   Name": " vmk0",
+            "   Netstack Instance": " defaultTcpipStack",
+            "   Opaque Network ID": " N/A",
+            "   Opaque Network Type": " N/A",
+            "   Port ID": " 33554436",
+            "   Portgroup": " Management Network",
+            "   Portset": " vSwitch0",
+            "   RXDispQueue Size": " 1",
+            "   TSO MSS": " 65535",
+            "   VDS Connection": " -1",
+            "   VDS Name": " N/A",
+            "   VDS Port": " N/A",
+            "   VDS UUID": " N/A"
+        },
         "System Users : DefaultGroup": {
             "daemon": "System daemons",
-            "dcui00": "DCUI User",
-            "nfsnobody5534": "Anonymous NFS User",
-            "nmokh000": "Administrator",
+            "dcui": "DCUI User",
+            "nfsnobody": "Anonymous NFS User",
+            "nmokh": "Administrator",
             "root": "Administrator",
-            "vpxuser00": "VMware VirtualCenter administration account"
+            "vpxuser": "VMware VirtualCenter administration account"
         },
-        "Version": "6.7.0"
+        "System time": "2018-06-11 15:33:26 ",
+        "VMFS": {
+            "Device": "t10.ATA_____TOSHIBA_DT01ACA050________________LENOVO___________47BGLNDAS",
+            "Extent": "0",
+            "Partition": "3",
+            "UUID": "5b03d68e-ab931380-f1c9-0015178515a2",
+            "Volume": "datastore1"
+        },
+        "Version": "6.7.0",
+        "vSwitches": {
+            "vSwitch0": {
+                "Configured Ports": "128",
+                "MTU": "1500",
+                "Num Ports": "2560",
+                "Switch Name": "vSwitch0",
+                "Uplinks": "vmnic0",
+                "Used Ports": "5"
+            }
+        }
     }
 }
