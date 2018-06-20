@@ -1,5 +1,5 @@
 {
-    "ReportDate": "Mon Jun 11 18:33:20 2018",
+    "ReportDate": "Wed Jun 20 19:36:59 2018",
     "esxi": {
         "All VMs": {
             "File": "tester/tester.vmx",
@@ -105,7 +105,7 @@
             "root": "Administrator",
             "vpxuser": "VMware VirtualCenter administration account"
         },
-        "System time": "2018-06-11 15:33:26 ",
+        "System time": "2018-06-20 16:37:09 ",
         "VMFS": {
             "Device": "t10.ATA_____TOSHIBA_DT01ACA050________________LENOVO___________47BGLNDAS",
             "Extent": "0",

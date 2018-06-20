@@ -1,14 +1,11 @@
-import sys
 import paramiko
 import json
 import time
+import sys
+import argparse
+
 from distutils.version import LooseVersion
 
-import atexit
-
-from pyVim import connect
-from pyVmomi import vmodl
-from pyVmomi import vim
 
 
 
@@ -65,13 +62,30 @@ def jCreator(oParent, oName, oData):
                 temp[oName] = oData
 
 if __name__ == "__main__":
-    print("enter the password:")
+    parent_parser = argparse.ArgumentParser(description="""ESXi security audit and inventory
+    For fully functional PowerShell is required. For install:\n
+       curl  https://packages.microsoft.com/keys/microsoft.asc > MS.key &&
+       apt-key add MS.key &&
+       curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list &&
+       sudo apt-get update &&
+       sudo apt-get install  -y powershell\n\n\t
 
-    host = '188.130.155.61'
-    user = 'root'
-    secret = 'DataStore1234'#input()
-    print("Your password:", secret)
-    port = 22
+
+    Then the PowerCLI module should be installed into PowerShell:\n
+       PS> Install-Module -Name VMware.PowerCLI\n
+    """)
+    parent_parser.add_argument('--user', action="store", default='root', help='ESXi user login. Default "root"')
+    parent_parser.add_argument('--password', action="store", help='ESXi user\'s password')
+    parent_parser.add_argument('--server', action="store", help="Server address or host")
+    parent_parser.add_argument('--pcliport', action="store", default="443", help="PowerCLI port, 443 by default")
+    parent_parser.add_argument('--sshport', action="store", default='22', help="SSH port, 22 by default")
+    argas = vars(parent_parser.parse_args())
+
+    host = argas['server']
+    user = argas['user']
+    secret = argas['password']
+    print("Connecting to :", host)
+    port = argas['sshport']
 
     global sName, version, rPath, flagFirstIteration, jReport
     flagFirstIteration = 0
