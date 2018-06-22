@@ -79,6 +79,10 @@ if __name__ == "__main__":
     parent_parser.add_argument('--server', action="store", help="Server address or host")
     parent_parser.add_argument('--pcliport', action="store", default="443", help="PowerCLI port, 443 by default")
     parent_parser.add_argument('--sshport', action="store", default='22', help="SSH port, 22 by default")
+    parent_parser.add_argument('--ptph', action="store", default='pwsh-preview', help="Path to power shell core, 'pwsh-preview' by default ")
+    parent_parser.add_argument('--ptinv', action="store", default='inventory.json', help="Path to inventory rules fille, 'inventory.json' by default ")
+    parent_parser.add_argument('--ptps', action="store", default='powershell.ps1', help="Path to pwershell script, 'powershell.ps1' by default")
+    parent_parser.add_argument('--ptrep', action="store", default='report.json', help="Path to report, 'report.json' by default")
     argas = vars(parent_parser.parse_args())
 
     host = argas['server']
@@ -91,8 +95,8 @@ if __name__ == "__main__":
     flagFirstIteration = 0
     version = " "
     jReport = {"ReportDate": time.ctime(time.time())}
-    rPath='report.json' #path to report
-    invCfgFile = 'inventory1.json' #inventory file
+    rPath = argas['ptrep'] #path to report
+    invCfgFile = argas['ptinv'] #inventory file
 
     try:
         client = paramiko.SSHClient()
