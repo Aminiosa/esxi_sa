@@ -3,6 +3,8 @@ import json
 import time
 import sys
 import argparse
+import os
+import subprocess
 
 from distutils.version import LooseVersion
 
@@ -16,12 +18,17 @@ def executor(execmd):
 
 def jParser(path):
     global var, version, sName, jReport
+    pshsc = """$oldWarningPreference = $WarningPreference
+$WarningPreference = 'SilentlyContinue'
+cd $args[3]
+Connect-VIServer $args[0] -user $args[1] -password $args[2]"""
     try:
         file = open(path, mode="r", encoding='utf-8')
     except:
         print("Can't open file")
         return
     data = json.load(file)
+    sid=0
     for test in data:
 
         if (version != " "):
@@ -30,26 +37,50 @@ def jParser(path):
                       ", script for:", test['Ver'], "to", test['VerM'])
                 continue
 
-        try:
-            print("#Operation: ", test['Msg'])
-            var = executor(test['Command'])
-        except:
-            print("Error while send query to ESXi server")
-            continue
+        if test['type'] == "ssh1":
+            try:
+                print("#Operation: ", test['Msg'])
+                var = executor(test['Command'])
+            except:
+                print("Error while send query to ESXi server")
+                continue
 
-        #try:
-        exec(test['Instruction'])
-        #except:
-        #    print("Can't execute the instructions")
-         #   continue
-        curPath = []
-        curPath.append(sName)
-        if test['Parent'] != 'NULL':
-            curPath.extend(test['Parent'].split(','))
-        if test['Condition'] != "NULL":
-            exec(test['Condition'])
-        jCreator(curPath, test['Name'], var)
-        print("...done.")
+            try:
+                exec(test['Instruction'])
+            except:
+                print("Can't execute the instructions, check it")
+                continue
+            curPath = []
+            curPath.append(sName)
+            if test['Parent'] != 'NULL':
+                curPath.extend(test['Parent'].split(','))
+
+            if test['Condition'] != "NULL":
+                exec(test['Condition'])
+
+            jCreator(curPath, test['Name'], var)
+            print("...done.")
+
+        if test['type'] == "psh":
+            pshsc = pshsc + "\necho \"<id:" + test['id'] + ">\"\n" + '\n'.join(test['Command']) + "\necho \"</id:" + test['id'] + ">\""
+            ids.append(test['id'])
+
+
+    pshsc = pshsc +"""\nDisconnect-VIServer $args[0] -confirm:$false
+$WarningPreference = $oldWarningPreference"""
+    #print(pshsc)
+    with open(argas['ptps'], 'w', encoding='utf-8') as g:
+        g.write(pshsc)
+    g.close()
+    alpha="powershell.exe -File powershell.ps1 " + argas['server'] + " " + argas['user'] + " " + argas['password'] \
+          + " \"" + os.getcwd() + "\" > tempdat.txt"
+    print("Gathering security configuration")
+    os.system(alpha)
+    for item in ids:
+        print("HEY")
+
+    #print(ids)
+    file.close()
 
 def jCreator(oParent, oName, oData):
     global jReport
@@ -68,11 +99,12 @@ if __name__ == "__main__":
        apt-key add MS.key &&
        curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list | sudo tee /etc/apt/sources.list.d/microsoft.list &&
        sudo apt-get update &&
-       sudo apt-get install  -y powershell\n\n\t
+       sudo apt-get install  -y powershell \n\n\t
 
 
     Then the PowerCLI module should be installed into PowerShell:\n
        PS> Install-Module -Name VMware.PowerCLI\n
+       PS> set-executionpolicy remotesigned
     """)
     parent_parser.add_argument('--user', action="store", default='root', help='ESXi user login. Default "root"')
     parent_parser.add_argument('--password', action="store", help='ESXi user\'s password')
@@ -91,7 +123,8 @@ if __name__ == "__main__":
     print("Connecting to :", host)
     port = argas['sshport']
 
-    global sName, version, rPath, flagFirstIteration, jReport
+    global sName, version, rPath, flagFirstIteration, jReport, ids
+    ids=[]
     flagFirstIteration = 0
     version = " "
     jReport = {"ReportDate": time.ctime(time.time())}
@@ -109,10 +142,10 @@ if __name__ == "__main__":
 
 
     jParser(invCfgFile)
-
+    pathToTemp = os.getcwd()+'\\'+"temp.dat"
     with open(rPath, 'w', encoding='utf-8') as g:
         json.dump(jReport, g, sort_keys=True, indent=4)
-
+    g.close()
     print("Script executed fully. Perhaps no errors.")
     client.close()
     exit(0)

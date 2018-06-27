@@ -8,7 +8,8 @@
     "Name": "Host Name",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -19,7 +20,8 @@
     "Name": "Version",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -30,7 +32,8 @@
     "Name": "System Users : DefaultGroup",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -41,7 +44,8 @@
     "Name": "ESXi User : Description",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -52,7 +56,8 @@
     "Name": "ESXi User : Role",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -63,10 +68,11 @@
     "Name": "System time",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
-{
+  {
     "Alert": "NULL",
     "Command": "esxcli network ip interface list | sed 1d",
     "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
@@ -75,10 +81,11 @@
     "Name": "IP Interface",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
-{
+  {
     "Alert": "NULL",
     "Command": "chkconfig -l | sed 's/ \\+/ /'",
     "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(' ')\n    temp[item[0]]=item[1]\nvar = temp",
@@ -87,12 +94,13 @@
     "Name": "Deamons' status",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
 
 
-{
+  {
     "Alert": "NULL",
     "Command": "esxcli storage vmfs extent list | sed 2d",
     "Instruction": "\nglobal var\ntemp={}\nvar=var.split('\\n')\nheader=var[0].split(' ')\ns=''\nwhile s in header: header.remove(s)\nheader.remove(header[1])\nheader.remove(header[1])\nheader.remove(header[3])\nheader.remove(header[4])\nitem=var[1].split(' ')\nwhile s in item: item.remove(s)\nfor unit in range (5):\n     temp[header[unit]]=item[unit]\nvar=temp",
@@ -101,10 +109,11 @@
     "Name": "VMFS",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
-{
+  {
     "Alert": "NULL",
     "Command": "esxcli network ip dns server list | sed 's/\\:/''/' | sed 's/\\,/''/'",
     "Instruction": "\nglobal var\nvar=var[3:]\ntemp={}\nvar = var.split(' ')\ntemp = []\nfor item in var[1:]:\n    temp.append(item)\nvar = temp\nvar[-1]=var[-1][:-1]",
@@ -113,10 +122,11 @@
     "Name": "DNS list",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
-{
+  {
     "Alert": "NULL",
     "Command": "vim-cmd vmsvc/getallvms | sed 's/[ ]\\+/\\ /'",
     "Instruction": "\nglobal var\ntemp={}\nvar=var.split('\\n')\nheader=var[0].split(' ')\ns=''\nwhile s in header: header.remove(s)\nheader.remove(header[4])\nitem=var[1].split(' ')\nwhile s in item: item.remove(s)\nitem.remove(item[2])\nfor unit in range (5):\n     temp[header[unit]]=item[unit]\nvar=temp",
@@ -125,7 +135,8 @@
     "Name": "All VMs",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
 
@@ -138,7 +149,8 @@
     "Name": "PCI",
     "Parent": "NULL",
     "Ver": "5",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
   {
     "Alert": "NULL",
@@ -149,30 +161,35 @@
     "Name": "Hosts",
     "Parent": "NULL",
     "Ver": "5",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
 
-{    "Alert": "NULL",
+  {
+    "Alert": "NULL",
     "Command": "cat /etc/vmware/*.conf | grep -o 'ipv.*' | sed '1d' | sed 's/\\=//' | sed 's/\\ //' | sed 's/\"//g'",
-    "Instruction": "\nglobal var\nvar = var.split('\\n')\nif ('') in var:   var.remove('')\ntemp = {}\nfor item in var:\n   item=item.split(' ',1)\n   temp[item[0]]=item[1]\nvar = temp",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\ntemp = {}\nif ('') in var:\n    var.remove('')\nfor item in var:\n    item=item.split(' ',1)\n    try:\n        temp[item[0]]=item[1]\n    except:\n        continue\nvar = temp",
     "Condition": "NULL",
     "Msg": "IP addresses",
     "Name": "ipv",
     "Parent": "NULL",
     "Ver": "5",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
-{    "Alert": "NULL",
+  {
+    "Alert": "NULL",
     "Command": "esxcli hardware pci list",
-    "Instruction": "\nglobal var\nvar=var.split('\\n\\n')\ntemp={}\nfor item in var:\n   item=item.split('\\n')\n   if ('') in item:      item.remove('')\n   key1=item.pop(0)\n   print(item)\n   print(key1)\n   temp2={}\n   for item2 in item:\n      item2=item2.split(': ')\n      temp2[item2[0]]=item2[1]\n   print(temp2)\n   temp[key1]=temp2\nvar=temp",
+    "Instruction": "\nglobal var\nvar=var.split('\\n\\n')\ntemp={}\nfor item in var:\n   item=item.split('\\n')\n   if ('') in item:      item.remove('')\n   key1=item.pop(0)\n   temp2={}\n   for item2 in item:\n      item2=item2.split(': ')\n      temp2[item2[0].lstrip()]=item2[1].lstrip()\n   temp[key1]=temp2\nvar=temp",
     "Condition": "NULL",
     "Msg": "Collecting PCI information",
     "Name": "PCI information",
     "Parent": "NULL",
     "Ver": "5",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
-{
+  {
     "Alert": "NULL",
     "Command": "esxcfg-vswitch -l |sed ':a;N;$!ba;s/\\n\\n.*//g;s/ \\{2,\\}/:/g'",
     "Instruction": "\nglobal var\nvar = var.split('\\n')\ndel var[-1]\nvar = [i.split(':') for i in var]\ntemp = {}\nfor item in var[1:]:\n temp[item[0]]={}\n for i in range(6):\n  temp[item[0]][var[0][i]] = item[i]\nvar = temp",
@@ -181,6 +198,44 @@
     "Name": "vSwitches",
     "Parent": "NULL",
     "Ver": "5",
-    "VerM": "99"
-}
+    "VerM": "99",
+    "type": "ssh"
+  },
+  {
+    "id":"0",
+    "Alert": "Not Secure level of image profile. Minimal level - Partner supported. To Fix:\\n Foreach ($VMHost in Get-VMHost ) {\\n$ESXCli = Get-EsxCli -VMHost $VMHost\\n$ESXCli.software.acceptance.Set(\"PartnerSupported\")\\n}",
+    "Instruction": "",
+    "Command":[ "Foreach ($VMHost in Get-VMHost ) {",
+      "$ESXCli = Get-EsxCli -VMHost $VMHost",
+      "$VMHost | Select Name, @{N=\"AcceptanceLevel\";E={$ESXCli.software.acceptance.get()}}",
+      "}"
+    ],
+    "Condition": "NULL",
+    "Msg": "",
+    "Name": "vSwitches",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "psh"
+  },
+  {
+    "id":"1",
+    "Alert": "Not Secure level of image profile. Minimal level - Partner supported. To Fix:\\n Foreach ($VMHost in Get-VMHost ) {\\n$ESXCli = Get-EsxCli -VMHost $VMHost\\n$ESXCli.software.acceptance.Set(\"PartnerSupported\")\\n}",
+    "Instruction": "",
+    "Command":[ "Foreach ($VMHost in Get-VMHost ) {",
+      "$ESXCli = Get-EsxCli -VMHost $VMHost",
+      "$ESXCli.system.module.list() | Foreach {",
+      "$ESXCli.system.module.get($_.Name) | Select @{N=\"VMHost\";E={$VMHost}}, Module,",
+      "License, Modulefile, Version, SignedStatus, SignatureDigest, SignatureFingerPrint",
+      "}",
+      "}"
+    ],
+    "Condition": "NULL",
+    "Msg": "",
+    "Name": "vSwitches",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "psh"
+  }
 ]
