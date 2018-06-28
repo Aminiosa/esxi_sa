@@ -32,38 +32,38 @@ Connect-VIServer $args[0] -user $args[1] -password $args[2]"""
     for test in data:
 
         if (version != " "):
-            if (LooseVersion(version) > LooseVersion(test['VerM'])) and (LooseVersion(version) < LooseVersion(test['Ver'])):
+            if (LooseVersion(version) > LooseVersion(data[test]['VerM'])) and (LooseVersion(version) < LooseVersion(data[test]['Ver'])):
                 print("That scrip is't capable with this version. Server version:", version,
-                      ", script for:", test['Ver'], "to", test['VerM'])
+                      ", script for:", data[test]['Ver'], "to", data[test]['VerM'])
                 continue
 
-        if test['type'] == "ssh1":
+        if data[test]['type'] == "ssh":
             try:
-                print("#Operation: ", test['Msg'])
-                var = executor(test['Command'])
+                print("#Operation: ", data[test]['Msg'])
+                var = executor(data[test]['Command'])
             except:
                 print("Error while send query to ESXi server")
                 continue
 
             try:
-                exec(test['Instruction'])
+                exec(data[test]['Instruction'])
             except:
                 print("Can't execute the instructions, check it")
                 continue
             curPath = []
             curPath.append(sName)
-            if test['Parent'] != 'NULL':
-                curPath.extend(test['Parent'].split(','))
+            if data[test]['Parent'] != 'NULL':
+                curPath.extend(data[test]['Parent'].split(','))
 
-            if test['Condition'] != "NULL":
-                exec(test['Condition'])
+            if data[test]['Condition'] != "NULL":
+                exec(data[test]['Condition'])
 
-            jCreator(curPath, test['Name'], var)
+            jCreator(curPath, data[test]['Name'], var)
             print("...done.")
 
-        if test['type'] == "psh":
-            pshsc = pshsc + "\necho \"<id:" + test['id'] + ">\"\n" + '\n'.join(test['Command']) + "\necho \"</id:" + test['id'] + ">\""
-            ids.append(test['id'])
+        if data[test]['type'] == "psh":
+            pshsc = pshsc + "\necho \"<id:" + data[test]['id'] + ">\"\n" + '\n'.join(data[test]['Command']) + "\necho \"</id:" + data[test]['id'] + ">\""
+            ids.append(data[test]['id'])
 
 
     pshsc = pshsc +"""\nDisconnect-VIServer $args[0] -confirm:$false
@@ -76,11 +76,19 @@ $WarningPreference = $oldWarningPreference"""
           + " \"" + os.getcwd() + "\" > tempdat.txt"
     print("Gathering security configuration")
     os.system(alpha)
-    for item in ids:
-        print("HEY")
+    tmpfile = open(rPath, 'r', encoding='utf-8')
+    #for item in ids:
+     #   temp = cutId(tmpfile, item)
 
     #print(ids)
     file.close()
+
+def cutId(file, id):
+
+        while file.readline() != ("<id: " + id + ">"):
+            continue
+      #  while
+
 
 def jCreator(oParent, oName, oData):
     global jReport
