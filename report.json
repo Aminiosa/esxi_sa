@@ -1,12 +1,23 @@
 {
-    "ReportDate": "Thu Jun 28 15:14:43 2018",
+    "ReportDate": "Thu Jun 28 15:38:13 2018",
     "esxi": {
-        "All VMs": {
-            "File": "tester/tester.vmx",
-            "Guest": "winVista64Guest",
-            "Name": "tester",
-            "Version": "vmx-14",
-            "Vmid": "1"
+        "All VMs Information": {
+            "1": {
+                "Annotation": "",
+                "File": "[datastore1] tester/tester.vmx",
+                "Guest OS": "winVista64Guest",
+                "Name": "tester",
+                "Version": "vmx-14",
+                "Vmid": "1"
+            },
+            "2": {
+                "Annotation": "",
+                "File": "[datastore1] tester2/tester2.vmx",
+                "Guest OS": "winVista64Guest",
+                "Name": "tester2",
+                "Version": "vmx-14",
+                "Vmid": "2"
+            }
         },
         "DNS list": [
             "8.8.8.8",
@@ -101,6 +112,14 @@
             "   VDS Name": " N/A",
             "   VDS Port": " N/A",
             "   VDS UUID": " N/A"
+        },
+        "Network configuration": {
+            "ipv4address": "188.130.155.61",
+            "ipv4broadcast": "188.130.155.63",
+            "ipv4gateway": "188.130.155.33",
+            "ipv4netmask": "255.255.255.224",
+            "ipv6": "false",
+            "ipv6gateway": "::"
         },
         "PCI": {
             "0000:00:00.0": "Bridge: Intel Corporation Intel Kaby Lake Host Bridge ",
@@ -669,31 +688,33 @@
             "root": "Administrator",
             "vpxuser": "VMware VirtualCenter administration account"
         },
-        "System time": "2018-06-28 12:14:49 ",
+        "System time": "2018-06-28 12:38:19 ",
         "VMFS": {
-            "Device": "t10.ATA_____TOSHIBA_DT01ACA050________________LENOVO___________47BGLNDAS",
-            "Extent": "0",
-            "Partition": "3",
-            "UUID": "5b03d68e-ab931380-f1c9-0015178515a2",
-            "Volume": "datastore1"
+            "datastore1": {
+                "Device Name": "t10.ATA_____TOSHIBA_DT01ACA050________________LENOVO___________47BGLNDAS",
+                "Extent Number": "0",
+                "Partition": "3",
+                "VMFS UUID": "5b03d68e-ab931380-f1c9-0015178515a2",
+                "Volume Name": "datastore1"
+            }
         },
         "Version": "6.7.0",
-        "ipv": {
-            "ipv4address": "188.130.155.61",
-            "ipv4broadcast": "188.130.155.63",
-            "ipv4gateway": "188.130.155.33",
-            "ipv4netmask": "255.255.255.224",
-            "ipv6": "false",
-            "ipv6Enabled": "true"
-        },
         "vSwitches": {
+            "NewSwitch": {
+                "128": "1024",
+                "1500": "2500",
+                "2560": "2560",
+                "5": "3",
+                "vSwitch0": "NewSwitch",
+                "vmnic0": "vmnic1"
+            },
             "vSwitch0": {
-                "Configured Ports": "128",
-                "MTU": "1500",
-                "Num Ports": "2560",
-                "Switch Name": "vSwitch0",
-                "Uplinks": "vmnic0",
-                "Used Ports": "5"
+                "128": "128",
+                "1500": "1500",
+                "2560": "2560",
+                "5": "5",
+                "vSwitch0": "vSwitch0",
+                "vmnic0": "vmnic0"
             }
         }
     }
