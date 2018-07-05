@@ -37,7 +37,7 @@ Connect-VIServer $args[0] -user $args[1] -password $args[2]"""
                       ", script for:", data[test]['Ver'], "to", data[test]['VerM'])
                 continue
 
-        if data[test]['type'] == "ssh":
+        if data[test]['type'] == "ssh1":
             try:
                 print("#Operation: ", data[test]['Msg'])
                 var = executor(data[test]['Command'])
@@ -62,32 +62,52 @@ Connect-VIServer $args[0] -user $args[1] -password $args[2]"""
             print("...done.")
 
         if data[test]['type'] == "psh":
-            pshsc = pshsc + "\necho \"<id:" + data[test]['id'] + ">\"\n" + '\n'.join(data[test]['Command']) + "\necho \"</id:" + data[test]['id'] + ">\""
-            ids.append(data[test]['id'])
-
+            pshsc = pshsc + "\necho \"<id:" + test + ">\"\n" + '\n'.join(data[test]['Command']) + "\necho \"</id:" + test + ">\""
+            ids.append(test)
 
     pshsc = pshsc +"""\nDisconnect-VIServer $args[0] -confirm:$false
 $WarningPreference = $oldWarningPreference"""
-    #print(pshsc)
     with open(argas['ptps'], 'w', encoding='utf-8') as g:
         g.write(pshsc)
     g.close()
     alpha="powershell.exe -File powershell.ps1 " + argas['server'] + " " + argas['user'] + " " + argas['password'] \
           + " \"" + os.getcwd() + "\" > tempdat.txt"
     print("Gathering security configuration")
-    os.system(alpha)
-    tmpfile = open(rPath, 'r', encoding='utf-8')
-    #for item in ids:
-     #   temp = cutId(tmpfile, item)
-
+    #os.system(alpha)
+    tmpfile = open("tempdat.txt", 'r', encoding='utf-8')
+    print(ids)
+    global pshData
+    for item in ids:
+        pshData = cutId(tmpfile, item)
+        if data[item]['Instruction'] != "NULL" and data[item]['Instruction'] != "":
+            #try:
+                exec(data[item]['Instruction'])
+                curPath = []
+                curPath.append(sName)
+                if data[item]['Parent'] != 'NULL':
+                    curPath.extend(data[item]['Parent'].split(','))
+                jCreator(curPath, data[item]['Name'], pshData)
+            #except:
+            #    print("Can not execute instruction. Operation ID:", item)
+        if data[item]['Condition'] != "NULL" and data[item]['Condition'] != "":
+            #try:
+                exec(data[item]['Condition'])
+            #except:
+             #   print("Can not execute Condition. Operation ID:", item)
+    tmpfile.close()
     #print(ids)
     file.close()
 
-def cutId(file, id):
-
-        while file.readline() != ("<id: " + id + ">"):
-            continue
-      #  while
+def cutId(files, id):
+        res = ""
+        tmpitm = files.readline()
+        while tmpitm != ("<id:" + id + ">\n"):
+            tmpitm = files.readline()
+        tmpitm = files.readline()
+        while tmpitm != ("</id:" + id + ">\n"):
+            res = res + tmpitm
+            tmpitm = files.readline()
+        return res
 
 
 def jCreator(oParent, oName, oData):
@@ -131,7 +151,8 @@ if __name__ == "__main__":
     print("Connecting to :", host)
     port = argas['sshport']
 
-    global sName, version, rPath, flagFirstIteration, jReport, ids
+    global sName, version, rPath, flagFirstIteration, jReport, ids, alerts
+    alerts = []
     ids=[]
     flagFirstIteration = 0
     version = " "
@@ -153,6 +174,9 @@ if __name__ == "__main__":
     pathToTemp = os.getcwd()+'\\'+"temp.dat"
     with open(rPath, 'w', encoding='utf-8') as g:
         json.dump(jReport, g, sort_keys=True, indent=4)
+    g.close()
+    with open("!!ALERTS.txt", 'w', encoding='utf-8') as g:
+        g.write('\n'.join(alerts))
     g.close()
     print("Script executed fully. Perhaps no errors.")
     client.close()

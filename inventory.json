@@ -9,7 +9,7 @@
     "Parent": "NULL",
     "Ver": "0",
     "VerM": "99",
-    "type": "ssh"
+    "type": "ssh1"
   },
   "2": {
     "Alert": "NULL",
@@ -195,16 +195,16 @@
   "17": {
     "id": "0",
     "Alert": "Not Secure level of image profile. Minimal level - Partner supported. To Fix:\\n Foreach ($VMHost in Get-VMHost ) {\\n$ESXCli = Get-EsxCli -VMHost $VMHost\\n$ESXCli.software.acceptance.Set(\"PartnerSupported\")\\n}",
-    "Instruction": "",
+    "Instruction": "var = ''\nglobal pshData\npshData = list(filter(None, pshData.split(\"\\n\")))\nfor iter in pshData[1:]:\n iter = iter.split(':')\n var = iter[1].lstrip()\npshData = var",
     "Command": [
       "Foreach ($VMHost in Get-VMHost ) {",
       "$ESXCli = Get-EsxCli -VMHost $VMHost",
       "$VMHost | Select Name, @{N=\"AcceptanceLevel\";E={$ESXCli.software.acceptance.get()}}",
       "}"
     ],
-    "Condition": "NULL",
+    "Condition": "if pshData != \"PartnerSupported\":\n alerts.append('----------->>>\\nCommunity Supported VIBs are not supported and do not have a digital signature. To\\nprotect the security and integrity of your ESXi hosts do not allow unsigned\\n(CommunitySupported) VIBs to be installed on your hosts.\\nRecommendations:\\nForeach ($VMHost in Get-VMHost ) {\\n$ESXCli = Get-EsxCli -VMHost $VMHost\\n$ESXCli.software.acceptance.Set(\"PartnerSupported\")\\n}\\n    ')",
     "Msg": "",
-    "Name": "vSwitches",
+    "Name": "Acceptance Level",
     "Parent": "NULL",
     "Ver": "5",
     "VerM": "99",
@@ -213,7 +213,7 @@
   "18": {
     "id": "1",
     "Alert": "Not Secure level of image profile. Minimal level - Partner supported. To Fix:\\n Foreach ($VMHost in Get-VMHost ) {\\n$ESXCli = Get-EsxCli -VMHost $VMHost\\n$ESXCli.software.acceptance.Set(\"PartnerSupported\")\\n}",
-    "Instruction": "",
+    "Instruction": "NULL",
     "Command": [
       "Foreach ($VMHost in Get-VMHost ) {",
       "$ESXCli = Get-EsxCli -VMHost $VMHost",
