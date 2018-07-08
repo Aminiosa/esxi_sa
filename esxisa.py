@@ -37,7 +37,7 @@ Connect-VIServer $args[0] -user $args[1] -password $args[2]"""
                       ", script for:", data[test]['Ver'], "to", data[test]['VerM'])
                 continue
 
-        if data[test]['type'] == "ssh1":
+        if data[test]['type'] == "ssh":
             try:
                 print("#Operation: ", data[test]['Msg'])
                 var = executor(data[test]['Command'])
@@ -73,7 +73,7 @@ $WarningPreference = $oldWarningPreference"""
     alpha="powershell.exe -File powershell.ps1 " + argas['server'] + " " + argas['user'] + " " + argas['password'] \
           + " \"" + os.getcwd() + "\" > tempdat.txt"
     print("Gathering security configuration")
-    #os.system(alpha)
+    os.system(alpha)
     tmpfile = open("tempdat.txt", 'r', encoding='utf-8')
     print(ids)
     global pshData

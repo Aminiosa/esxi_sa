@@ -9,7 +9,7 @@
     "Parent": "NULL",
     "Ver": "0",
     "VerM": "99",
-    "type": "ssh1"
+    "type": "ssh"
   },
   "2": {
     "Alert": "NULL",
