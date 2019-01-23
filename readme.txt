@@ -1,4 +1,6 @@
-Confgurint a hooks.
+ESXi audit tool
+
+Confguring hooks.
 Hooks are set up in *.json files.
 Structure of *.json file:
 {

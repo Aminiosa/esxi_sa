@@ -1,5 +1,5 @@
-[
-  {
+{
+  "1": {
     "Alert": "NULL",
     "Command": "uname -a",
     "Condition": "NULL",
@@ -8,9 +8,10 @@
     "Name": "Host Name",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
-  {
+  "2": {
     "Alert": "NULL",
     "Command": "uname -a",
     "Instruction": "\nglobal var\nvar = var.split(\" \")\nvar=var[2]",
@@ -19,20 +20,22 @@
     "Name": "Version",
     "Parent": "NULL",
     "Ver": "0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
-  {
+  "3": {
     "Alert": "NULL",
-    "Command": "cat /etc/passwd | sed 's/\\:[^:]*:[^:]*:[^:]//' | sed 's/\\:\\/.*//'",
+    "Command": "cat /etc/passwd | sed 's/\\:[^:]*\\:[^:]*\\:[^:]*\\:/\\:/' | sed  's/\\:\\/.*//'",
     "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
     "Condition": "NULL",
-    "Msg": "getting System users and groups",
+    "Msg": "getting System users and def.groups",
     "Name": "System Users : DefaultGroup",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
   },
-  {
+  "4": {
     "Alert": "NULL",
     "Command": "esxcli system account list | sed 1,2d | sed 's/[ ]\\+/\\:/'",
     "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
@@ -41,6 +44,184 @@
     "Name": "ESXi User : Description",
     "Parent": "NULL",
     "Ver": "6.0",
-    "VerM": "99"
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "5": {
+    "Alert": "NULL",
+    "Command": " esxcli system permission list | sed 1,2d | sed 's/[ ]\\{2,\\}\\+/\\:/g'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    if item[1] == 'false':\n     temp[item[0]]=item[2]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting ESXi users and note",
+    "Name": "ESXi User : Role",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "6": {
+    "Alert": "NULL",
+    "Command": "esxcli hardware clock get | sed 's/[TZ]/ /g'",
+    "Instruction": "\nglobal var\nvar=var[0:-1]",
+    "Condition": "NULL",
+    "Msg": "Getting system time",
+    "Name": "System time",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "7": {
+    "Alert": "NULL",
+    "Command": "esxcli network ip interface list | sed 1d",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Getting ip interface list",
+    "Name": "IP Interface",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "8": {
+    "Alert": "NULL",
+    "Command": "chkconfig -l | sed 's/ \\+/ /'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(' ')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Looking for deamons",
+    "Name": "Deamons' status",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "9": {
+    "Alert": "NULL",
+    "Command": "esxcli storage vmfs extent list | sed 2d | sed 's/ \\{2,\\}/:/g'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\nvar = [i.split(':') for i in var]\ntemp = {}\nfor item in var[1:]:\n temp[item[0]]={}\n for i in range(5):\n  temp[item[0]][var[0][i]] = item[i]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "VMFS",
+    "Name": "VMFS",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "10": {
+    "Alert": "NULL",
+    "Command": "esxcli network ip dns server list | sed 's/\\:/''/' | sed 's/\\,/''/'",
+    "Instruction": "\nglobal var\nvar=var[3:]\ntemp={}\nvar = var.split(' ')\ntemp = []\nfor item in var[1:]:\n    temp.append(item)\nvar = temp\nvar[-1]=var[-1][:-1]",
+    "Condition": "NULL",
+    "Msg": "DNS list",
+    "Name": "DNS list",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "11": {
+    "Alert": "NULL",
+    "Command": "vim-cmd vmsvc/getallvms | sed 's/ \\{2,\\}/:/g' | sed 's/[ ]\\+/\\ /'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\nvar = [i.split(':') for i in var]\ntemp = {}\nfor item in var[1:]:\n temp[item[0]]={}\n for i in range(6):\n  temp[item[0]][var[0][i]] = item[i]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Getting all VMs names",
+    "Name": "All VMs Information",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "12": {
+    "Alert": "NULL",
+    "Command": "lspci",
+    "Instruction": "\nglobal var\nvar=var.split('\\n')\ntemp={}\nvar.remove('')\nfor item in var:\n   item=item.split(' ',1)\n   temp[item[0]]=item[1]\nvar=temp\n",
+    "Condition": "NULL",
+    "Msg": "Collecting PCIs",
+    "Name": "PCI",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "13": {
+    "Alert": "NULL",
+    "Command": "cat /etc/hosts|sed '1d'| sed '1d'",
+    "Instruction": "\nglobal var\nvar=var.split('\\n')\ntemp={}\nfor item in var:\n   item=item.split('\\t')\n   if ('') in item:      item.remove('')\n   if item==[]:\n      continue\n   temp[item[0]]=item[1]\nvar=temp",
+    "Condition": "NULL",
+    "Msg": "Collecting hosts",
+    "Name": "Hosts",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "14": {
+    "Alert": "NULL",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nif ('') in var:   var.remove('')\ntemp = {}\nfor item in var:\n   item=item.split(' ',1)\n   temp[item[0]]=item[1]\nvar = temp",
+    "Command": "cat /etc/vmware/*.conf | grep -o 'ipv.*' | sed '1d;$d' | sed 's/\\=//' | sed 's/\\ //' | sed 's/\"//g'",
+    "Condition": "NULL",
+    "Msg": "Collecting network information",
+    "Name": "Network configuration",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "15": {
+    "Alert": "NULL",
+    "Command": "esxcli hardware pci list",
+    "Instruction": "\nglobal var\nvar=var.split('\\n\\n')\ntemp={}\nfor item in var:\n   item=item.split('\\n')\n   if ('') in item:      item.remove('')\n   key1=item.pop(0)\n   temp2={}\n   for item2 in item:\n      item2=item2.split(': ')\n      temp2[item2[0].lstrip()]=item2[1].lstrip()\n   temp[key1]=temp2\nvar=temp",
+    "Condition": "NULL",
+    "Msg": "Collecting PCI information",
+    "Name": "PCI information",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "16": {
+    "Alert": "NULL",
+    "Command": "esxcfg-vswitch -l |sed ':a;N;$!ba;s/\\\\n\\\\n.*//g;s/ \\{2,\\}/:/g;s/ \\{2,\\}/:/g'",
+    "Instruction": "\nglobal var\nvar = var.split(\"\\n\\n\")\ntemp = {}\nfor j in range(0, len(var)-1, 2):\n    var[j]=var[j].split('\\n')\n    for k in range(0, len(var[j])):\n        var[j][k] = list(filter(None, var[j][k].split(':')))\n    var[j+1]=var[j+1].split('\\n')\n    for k in range(0, len(var[j+1])):\n       var[j+1][k] = list(filter(None, var[j+1][k].split(':')))\n    tind = var[j][1][0]\n    temp[tind] = {}\n    for k in range(0, len(var[j][0])):\n        temp[tind][var[j][0][k]] = var[j][1][k]\n        #print(var[j][k])\n    if len(var[j+1]) > 1:\n        for z in range(1,len(var[j+1])):\n            temp[tind][\"Portgroups\" + str(z-1)] = {}\n            for k in range(0, len(var[j+1][0])):\n                temp[tind][\"Portgroups\" + str(z-1)][var[j+1][0][k]] = var[j+1][z][k]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Getting vSwitches parameters ",
+    "Name": "vSwitches",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "ssh"
+  },
+  "17": {
+    "Alert": "NULL",
+    "Command": "foreach ($vms in get-vm) {echo \"$vms\"; Get-VIPermission -Entity $vms | Select-Object -Property role,principal}",
+    "Instruction": "\nglobal pshData\npshData=pshResParser(pshData,'Role')",
+    "Condition": "NULL",
+    "Msg": "Getting vSwitches parameters ",
+    "Name": "VMUsers(VM{role[users])}",
+    "Parent": "All VMs Information",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "psh"
+  },
+  "18": {
+    "Alert": "NULL",
+    "Command": ["$content = get-vm; $Report=@(); foreach($Computer in $content){",
+      "$GeneralProp=[ordered]@{",
+      "\"ComputerName\"=$computer.Name;};$nic = 1",
+      "$Computer | Get-VirtualPortGroup | foreach { ",
+      "$GeneralProp.Add(\"NIC$($nic) vSwitch\",$_.VirtualSwitch)",
+      "$GeneralProp.Add(\"NIC$($nic) PortGroup\",$_.Name)",
+      "$GeneralProp.Add(\"NIC$($nic) VLAN ID\",$_.VlanID)",
+      "$GeneralProp.Add(\"NIC$($nic) IP\", $Computer.Guest.IPAddress[$nic-1])",
+      "$nic++};$Report += \"$computer\";$Report += New-Object -TypeName psobject -Property $GeneralProp};Echo $Report"
+    ],
+    "Instruction": "\nglobal pshData\npshData=pshResParser(pshData)",
+    "Condition": "NULL",
+    "Msg": "Getting VMNICS ",
+    "Name": "VMNICS",
+    "Parent": "All VMs Information",
+    "Ver": "5",
+    "VerM": "99",
+    "type": "psh"
   }
-]
+}

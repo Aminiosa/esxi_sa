@@ -1,0 +1,1005 @@
+
+Name                           Port  User                          
+----                           ----  ----                          
+188.130.155.61                 443   nmokh                         
+<id:17>
+tester
+
+Role      : Admin
+Principal : nmokh
+
+
+Role      : Admin
+Principal : vpxuser
+
+
+Role      : Admin
+Principal : dcui
+
+
+Role      : Admin
+Principal : root
+
+tester2
+
+Role      : Admin
+Principal : tuser
+
+
+Role      : Admin
+Principal : nmokh
+
+
+Role      : Admin
+Principal : vpxuser
+
+
+Role      : Admin
+Principal : dcui
+
+
+Role      : Admin
+Principal : root
+
+</id:17>
+<id:18>
+tester
+
+ComputerName   : tester
+NIC1 vSwitch   : vSwitch0
+NIC1 PortGroup : VM Network
+NIC1 VLAN ID   : 0
+NIC1 IP        : 
+
+tester2
+
+ComputerName   : tester2
+NIC1 vSwitch   : vSwitch0
+NIC1 PortGroup : VM Network
+NIC1 VLAN ID   : 0
+NIC1 IP        : 
+
+</id:18>
+<id:100>
+
+Name            : 188.130.155.61
+AcceptanceLevel : PartnerSupported
+
+</id:100>
+<id:101>
+vmkernel
+
+VMHost       : 188.130.155.61
+Module       : vmkernel
+License      : 
+ModuleFile   : 
+Version      : Version Releasebuild-8169922
+SignedStatus : Unsigned
+
+chardevs
+
+VMHost       : 188.130.155.61
+Module       : chardevs
+License      : 
+ModuleFile   : 
+Version      : 
+SignedStatus : Unsigned
+
+user
+
+VMHost       : 188.130.155.61
+Module       : user
+License      : 
+ModuleFile   : 
+Version      : 
+SignedStatus : Unsigned
+
+procfs
+
+VMHost       : 188.130.155.61
+Module       : procfs
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/procfs
+Version      : 
+SignedStatus : Unsigned
+
+lfHelper
+
+VMHost       : 188.130.155.61
+Module       : lfHelper
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/lfHelper
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vsanapi
+
+VMHost       : 188.130.155.61
+Module       : vsanapi
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vsanapi
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vsanbase
+
+VMHost       : 188.130.155.61
+Module       : vsanbase
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vsanbase
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vprobe
+
+VMHost       : 188.130.155.61
+Module       : vprobe
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vprobe
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_mgmt
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_mgmt
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_mgmt
+Version      : 
+SignedStatus : Unsigned
+
+iodm
+
+VMHost       : 188.130.155.61
+Module       : iodm
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/iodm
+Version      : 
+SignedStatus : Unsigned
+
+dma_mapper_iommu
+
+VMHost       : 188.130.155.61
+Module       : dma_mapper_iommu
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/dma_mapper_iommu
+Version      : 
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_mgmt_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_mgmt_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_mgmt_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_mgmt_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_mgmt_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_mgmt_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_mgmt_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_mgmt_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_mgmt_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_vmkernel_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_vmkernel_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_vmkernel_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_vmkernel_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_vmkernel_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_vmkernel_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_vmkernel_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_vmkernel_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_vmkernel_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkbsd
+
+VMHost       : 188.130.155.61
+Module       : vmkbsd
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkbsd
+Version      : 
+SignedStatus : Unsigned
+
+vmkusb
+
+VMHost       : 188.130.155.61
+Module       : vmkusb
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkusb
+Version      : 0.1-1vmw.670.0.0.8169922
+SignedStatus : Unsigned
+
+vmw_ahci
+ne1000
+
+VMHost       : 188.130.155.61
+Module       : ne1000
+License      : ThirdParty:Intel-VMware Proprietary
+ModuleFile   : /usr/lib/vmware/vmkmod/ne1000
+Version      : 0.8.3-4vmw.670.0.0.8169922
+SignedStatus : Unsigned
+
+iscsi_trans
+
+VMHost       : 188.130.155.61
+Module       : iscsi_trans
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/iscsi_trans
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+iscsi_trans_compat_shim
+
+VMHost       : 188.130.155.61
+Module       : iscsi_trans_compat_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/iscsi_trans_compat_shim
+Version      : Build on Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_iscsiInc_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_iscsiInc_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_iscsiInc_shim
+Version      : Build on Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_iscsiInc_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_iscsiInc_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_iscsiInc_shim
+Version      : Build on Apr  3 2018
+SignedStatus : Unsigned
+
+etherswitch
+
+VMHost       : 188.130.155.61
+Module       : etherswitch
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/etherswitch
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+portcfg
+
+VMHost       : 188.130.155.61
+Module       : portcfg
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/portcfg
+Version      : 
+SignedStatus : Unsigned
+
+vswitch
+
+VMHost       : 188.130.155.61
+Module       : vswitch
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vswitch
+Version      : Version 1.0.0-0 Releasebuild-8169922, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+netsched_fifo
+
+VMHost       : 188.130.155.61
+Module       : netsched_fifo
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/netsched_fifo
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+netsched_hclk
+
+VMHost       : 188.130.155.61
+Module       : netsched_hclk
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/netsched_hclk
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+netioc
+
+VMHost       : 188.130.155.61
+Module       : netioc
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/netioc
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+lb_netqueue_bal
+
+VMHost       : 188.130.155.61
+Module       : lb_netqueue_bal
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/lb_netqueue_bal
+Version      : 
+SignedStatus : Unsigned
+
+dm
+
+VMHost       : 188.130.155.61
+Module       : dm
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/dm
+Version      : Version 0.11, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+nmp
+
+VMHost       : 188.130.155.61
+Module       : nmp
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/nmp
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+hpp
+
+VMHost       : 188.130.155.61
+Module       : hpp
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/hpp
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_satp_local
+
+VMHost       : 188.130.155.61
+Module       : vmw_satp_local
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_satp_local
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_satp_default_aa
+
+VMHost       : 188.130.155.61
+Module       : vmw_satp_default_aa
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_satp_default_aa
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_psp_lib
+
+VMHost       : 188.130.155.61
+Module       : vmw_psp_lib
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_psp_lib
+Version      : Version 3.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_psp_fixed
+
+VMHost       : 188.130.155.61
+Module       : vmw_psp_fixed
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_psp_fixed
+Version      : Version 2.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_psp_rr
+
+VMHost       : 188.130.155.61
+Module       : vmw_psp_rr
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_psp_rr
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmw_psp_mru
+
+VMHost       : 188.130.155.61
+Module       : vmw_psp_mru
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmw_psp_mru
+Version      : Version 2.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmci
+
+VMHost       : 188.130.155.61
+Module       : vmci
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmci
+Version      : Version 9.8.5, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+healthchk
+
+VMHost       : 188.130.155.61
+Module       : healthchk
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/healthchk
+Version      : 
+SignedStatus : Unsigned
+
+teamcheck
+
+VMHost       : 188.130.155.61
+Module       : teamcheck
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/teamcheck
+Version      : 
+SignedStatus : Unsigned
+
+vlanmtucheck
+
+VMHost       : 188.130.155.61
+Module       : vlanmtucheck
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vlanmtucheck
+Version      : 
+SignedStatus : Unsigned
+
+heartbeat
+
+VMHost       : 188.130.155.61
+Module       : heartbeat
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/heartbeat
+Version      : 
+SignedStatus : Unsigned
+
+shaper
+
+VMHost       : 188.130.155.61
+Module       : shaper
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/shaper
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+lldp
+
+VMHost       : 188.130.155.61
+Module       : lldp
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/lldp
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+cdp
+
+VMHost       : 188.130.155.61
+Module       : cdp
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/cdp
+Version      : Built on:Apr  3 2018
+SignedStatus : Unsigned
+
+ipfix
+
+VMHost       : 188.130.155.61
+Module       : ipfix
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/ipfix
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+tcpip4
+
+VMHost       : 188.130.155.61
+Module       : tcpip4
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/tcpip4
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+dvsdev
+
+VMHost       : 188.130.155.61
+Module       : dvsdev
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/dvsdev
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+dvfilter
+
+VMHost       : 188.130.155.61
+Module       : dvfilter
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/dvfilter
+Version      : Version 1.1.0-2, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+lacp
+
+VMHost       : 188.130.155.61
+Module       : lacp
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/lacp
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_dvfilter_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_dvfilter_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_dvfilter_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_dvfilter_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_dvfilter_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_dvfilter_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_dvfilter_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_dvfilter_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_dvfilter_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+crypto_fips
+
+VMHost       : 188.130.155.61
+Module       : crypto_fips
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/crypto_fips
+Version      : Built on: Jul 17 2017
+SignedStatus : Unsigned
+
+esxfw
+
+VMHost       : 188.130.155.61
+Module       : esxfw
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/esxfw
+Version      : 
+SignedStatus : Unsigned
+
+dvfilter-generic-fastpath
+
+VMHost       : 188.130.155.61
+Module       : dvfilter-generic-fastpath
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/dvfilter-generic-fastpath
+Version      : Verison 0.1.0-0 (Built on: Apr  3 2018)
+SignedStatus : Unsigned
+
+vmkibft
+
+VMHost       : 188.130.155.61
+Module       : vmkibft
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkibft
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vfat
+
+VMHost       : 188.130.155.61
+Module       : vfat
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vfat
+Version      : 
+SignedStatus : Unsigned
+
+lvmdriver
+
+VMHost       : 188.130.155.61
+Module       : lvmdriver
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/lvmdriver
+Version      : Version 5.21, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+deltadisk
+
+VMHost       : 188.130.155.61
+Module       : deltadisk
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/deltadisk
+Version      : Version 1.1, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vdfm
+
+VMHost       : 188.130.155.61
+Module       : vdfm
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vdfm
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+gss
+
+VMHost       : 188.130.155.61
+Module       : gss
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/gss
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmfs3
+
+VMHost       : 188.130.155.61
+Module       : vmfs3
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmfs3
+Version      : Version VMFS6:24.82, VMFS6-L:24.82, VMFS5:14.81, VMFS5-L:14.60, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+sunrpc
+
+VMHost       : 188.130.155.61
+Module       : sunrpc
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/sunrpc
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmklink_mpi
+
+VMHost       : 188.130.155.61
+Module       : vmklink_mpi
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmklink_mpi
+Version      : 
+SignedStatus : Unsigned
+
+swapobj
+
+VMHost       : 188.130.155.61
+Module       : swapobj
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/swapobj
+Version      : 
+SignedStatus : Unsigned
+
+nfsclient
+
+VMHost       : 188.130.155.61
+Module       : nfsclient
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/nfsclient
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+nfs41client
+
+VMHost       : 188.130.155.61
+Module       : nfs41client
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/nfs41client
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+pciPassthru
+
+VMHost       : 188.130.155.61
+Module       : pciPassthru
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/pciPassthru
+Version      : 
+SignedStatus : Unsigned
+
+vflash
+
+VMHost       : 188.130.155.61
+Module       : vflash
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vflash
+Version      : Version 1.1, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+procMisc
+
+VMHost       : 188.130.155.61
+Module       : procMisc
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/procMisc
+Version      : 
+SignedStatus : Unsigned
+
+vmkapei
+
+VMHost       : 188.130.155.61
+Module       : vmkapei
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapei
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+nrdma
+
+VMHost       : 188.130.155.61
+Module       : nrdma
+License      : BSD
+ModuleFile   : /usr/lib/vmware/vmkmod/nrdma
+Version      : 0.001-1vmw.670.0.0.8169922
+SignedStatus : Unsigned
+
+nrdma_vmkapi_shim
+
+VMHost       : 188.130.155.61
+Module       : nrdma_vmkapi_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/nrdma_vmkapi_shim
+Version      : Build on Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_rdma_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_rdma_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_rdma_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_rdma_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_rdma_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_rdma_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_nmp_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_nmp_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_nmp_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_nmp_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_nmp_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_nmp_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_nmp_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_nmp_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_nmp_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vrdma
+
+VMHost       : 188.130.155.61
+Module       : vrdma
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vrdma
+Version      : Version VRDMA_MAJOR_VERSION_VALUE.VRDMA_MINOR_VERSION_VALUE, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_4_0_0_iscsi_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_4_0_0_iscsi_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_4_0_0_iscsi_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_3_0_0_iscsi_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_3_0_0_iscsi_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_3_0_0_iscsi_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vmkapi_v2_2_0_0_iscsi_shim
+
+VMHost       : 188.130.155.61
+Module       : vmkapi_v2_2_0_0_iscsi_shim
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vmkapi_v2_2_0_0_iscsi_shim
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+balloonVMCI
+
+VMHost       : 188.130.155.61
+Module       : balloonVMCI
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/balloonVMCI
+Version      : 
+SignedStatus : Unsigned
+
+hbr_filter
+
+VMHost       : 188.130.155.61
+Module       : hbr_filter
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/hbr_filter
+Version      : Implements v20.10; built: Apr  3 2018
+SignedStatus : Unsigned
+
+ftcpt
+
+VMHost       : 188.130.155.61
+Module       : ftcpt
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/ftcpt
+Version      : Interface 1.0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+filtmod
+
+VMHost       : 188.130.155.61
+Module       : filtmod
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/filtmod
+Version      : Version 1.0.0-0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+svmmirror
+
+VMHost       : 188.130.155.61
+Module       : svmmirror
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/svmmirror
+Version      : 
+SignedStatus : Unsigned
+
+cbt
+
+VMHost       : 188.130.155.61
+Module       : cbt
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/cbt
+Version      : Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+migrate
+
+VMHost       : 188.130.155.61
+Module       : migrate
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/migrate
+Version      : vmotion protocol: 5.3 vmk interface: 3.0 Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+vfc
+
+VMHost       : 188.130.155.61
+Module       : vfc
+License      : VMware
+ModuleFile   : /usr/lib/vmware/vmkmod/vfc
+Version      : Version 1.0, Built on: Apr  3 2018
+SignedStatus : Unsigned
+
+</id:101>
+<id:102>
+
+
+
+
+Name       : 188.130.155.61
+NTPSetting : 
+
+
+
+</id:102>
+<id:105>
+
+
+Name                      : 188.130.155.61
+Net.DVFilterBindIpAddress : 
+
+
+
+</id:105>
+<id:107>
+
+
+Name                 : 188.130.155.61
+Syslog.global.logDir : 
+
+
+
+</id:107>
+<id:108>
+
+
+Name                  : 188.130.155.61
+Syslog.global.logHost : 
+
+
+
+</id:108>
+<id:109>
+
+
+VMHost                 : 188.130.155.61
+Domain                 : 
+DomainMembershipStatus : 
+
+
+
+</id:109>
+<id:110>
+
+
+Policy : on
+
+
+
+</id:110>
+<id:111>
+
+
+Policy : off
+
+
+
+</id:111>
+<id:112>
+
+
+Policy : off
+
+
+
+</id:112>
+<id:113>
+
+
+UserVars.ESXiShellInteractiveTimeOut : 
+
+
+
+</id:113>
+<id:114>
+
+
+UserVars.ESXiShellInteractiveTimeOut : 
+
+
+
+</id:114>

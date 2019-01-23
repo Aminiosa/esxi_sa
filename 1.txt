@@ -1,0 +1,36 @@
+Connecting to : 188.130.155.61
+#Operation:  Getting name of server
+...done.
+#Operation:  Getting version of server
+...done.
+#Operation:  getting System users and def.groups
+...done.
+#Operation:  getting ESXi users and note
+...done.
+#Operation:  getting ESXi users and note
+...done.
+#Operation:  Getting system time
+...done.
+#Operation:  Getting ip interface list
+...done.
+#Operation:  Looking for deamons
+...done.
+#Operation:  VMFS
+...done.
+#Operation:  DNS list
+...done.
+#Operation:  Getting all VMs names
+...done.
+#Operation:  Collecting PCIs
+...done.
+#Operation:  Collecting hosts
+...done.
+#Operation:  Collecting network information
+...done.
+#Operation:  Collecting PCI information
+...done.
+#Operation:  Getting vSwitches parameters 
+...done.
+Gathering security configuration
+ids: ['17', '18', '100']
+Now exec operation is: 17

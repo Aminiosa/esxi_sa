@@ -1,0 +1,27 @@
+---->
+Configure remote Dump Collector Server. To fix ssh commands:
+ esxcli system coredump network set -v [VMK#] -i [DUMP_SERVER] -o [PORT]
+esxcli system coredump network set -e true I 
+---->
+Please configure NTP Server. Command: 
+$NTPServers = "pool.ntp.org", "pool2.ntp.org" Get-VMHost | Add-VmHostNtpServer $NTPServers
+---->
+There is no logging dir. Set Syslog.global.logDir for each host. To fix:
+ Get-VMHost | Foreach { Set-VMHostAdvancedConfiguration -VMHost $_ -Name
+Syslog.global.logHost -Value "<NewLocation>" }
+---->
+There is no logging host. Set Syslog.global.logHost for each host. To fix:
+ Get-VMHost | Foreach { Set-VMHostAdvancedConfiguration -VMHost $_ -Name
+Syslog.global.logDir -Value "<NewLocation>" }
+---->
+There is no AD Authentication. Join the ESXI Host to the Domain. To fix:
+ Get-VMHost HOST1 | Get-VMHostAuthentication | Set-VMHostAuthentication -Domain domain.local -User Administrator -Password Passw0rd -JoinDomain
+---->
+Set DCUI to start manually rather than automatic for all hosts. To fix: 
+Get-VMHost | Get-VMHostService | Where { $_.key -eq "DCUI" } | Set-VMHostService -Policy Off
+---->
+Set Remove UserVars.ESXiShellInteractiveTimeOut to 300 on all hosts. To fix: 
+Get-VMHost | Foreach { Set-VMHostAdvancedConfiguration -VMHost $_ -Name UserVars.ESXiShellInteractiveTimeOut -Value 300 }
+---->
+Set Remove UserVars.ESXiShellInteractiveTimeOut to 300 on all hosts. To fix: 
+Get-VMHost | Foreach { Set-VMHostAdvancedConfiguration -VMHost $_ -Name UserVars.ESXiShellInteractiveTimeOut -Value 300 }

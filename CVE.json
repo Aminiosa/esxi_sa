@@ -1,0 +1,180 @@
+{"5.5": {
+            "CVE-2017-4941": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4941/",
+                "Type": "Exec code overflow",
+                "CVSS Score": "6.0",
+                "Patches": "ESXi550-201709101-SG"
+            },
+            "CVE-2017-4940": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4940/",
+                "Type": "XSS",
+                "CVSS Score": "4.3",
+                "Patches": "ESXi550-201709102-SG"
+            },
+            "CVE-2017-4925": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4925/",
+                "CVSS Score": "2.1",
+"Patches": "ESXi550-201709101-SG"
+            },
+"CVE-2017-4905": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4905/",
+                "CVSS Score": "2.1",
+                "Patches": "ESXi550-201703401-SG"
+            },
+    "CVE-2017-4904": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4904/",
+                "Type": "DoS, Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi550-201703401-SG"
+            },
+"CVE-2017-4903": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4903/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi550-201703401-SG"
+            },
+"CVE-2017-4902": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4902/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi550-201703401-SG"
+            },
+"CVE-2016-7463": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2016-7463/",
+                "Type": "XSS",
+                "CVSS Score": "3.5"
+           },
+"CVE-2016-5330": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2016-5330/",
+                "Type": "Gain privileges",
+                "CVSS Score": "4.4"
+           },
+           "CVE-2015-6933": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2015-6933/",
+                "Type": "DoS, Gain privileges, Memory corruption",
+                "CVSS Score": "6.5"
+           },
+ "CVE-2015-1044": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2015-1044/",
+                "Type": "DoS",
+                "CVSS Score": "3.3"
+           },
+ "CVE-2014-3793": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2014-3793/",
+                "Type": "DoS, Gain privileges",
+                "CVSS Score": "5.8"
+           }
+         },
+"6.0": {
+            "CVE-2017-4941": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4941/",
+                "Type": "Exec code overflow",
+                "CVSS Score": "6.0",
+                "Patches": "ESXi600-201711101-SG"
+            },
+            "CVE-2017-4940": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4940/",
+                "Type": "XSS",
+                "CVSS Score": "4.3",
+                "Patches": "ESXi600-201711103-SG"
+            },
+ "CVE-2017-4925": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4925/",
+                "CVSS Score": "2.1",
+                "Patches": "ESXi600-201706101-SG"
+            },
+"CVE-2017-4905": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4905/",
+                "CVSS Score": "2.1",
+                "Patches": "ESXi600-201703401-SG (U3), ESXi600-201703403-SG (U2), ESXi600-201703402-SG (U1)"
+            },
+    "CVE-2017-4904": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4904/",
+                "Type": "DoS, Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi600-201703401-SG (U3), ESXi600-201703403-SG (U2), ESXi600-201703402-SG (U1)"
+            },
+"CVE-2017-4903": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4903/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi600-201703401-SG (U3), ESXi600-201703403-SG (U2), ESXi600-201703402-SG (U1)"
+            },
+"CVE-2016-7463": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2016-7463/",
+                "Type": "XSS",
+                "CVSS Score": "3.5"
+           },
+"CVE-2016-5331": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2016-5331/",
+                "Type": "HTTP response splitting",
+                "CVSS Score": "4.3"
+           },
+"CVE-2016-5330": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2016-5330/",
+                "Type": "Gain privileges",
+                "CVSS Score": "4.4"
+           },
+           "CVE-2015-6933": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2015-6933/",
+                "Type": "DoS, Gain privileges, Memory corruption",
+                "CVSS Score": "6.5"
+
+         }
+         },
+"6.5": {
+            "CVE-2017-4941": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4941/",
+                "Type": "Exec code overflow",
+                "CVSS Score": "6.0"
+            },
+         "CVE-2017-4940": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4940/",
+                "Type": "XSS",
+                "CVSS Score": "4.3",
+                "Patches": "ESXi650-201712103-SG"
+            },
+    "CVE-2017-4933": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4933/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "6.0",
+                "Patches": "ESXi650-201710401-BG"
+            },
+ "CVE-2017-4925": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4925/",
+                "CVSS Score": "2.1",
+                "Patches": "ESXi650-201707101-SG"
+            },
+"CVE-2017-4924": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4924/",
+                "Type": "Exec Code",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi650-201707101-SG"
+            },
+"CVE-2017-4905": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4905/",
+                "CVSS Score": "2.1",
+                "Patches": "ESXi650-201703410-SG"
+            },
+    "CVE-2017-4904": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4904/",
+                "Type": "DoS, Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi650-201703410-SG"
+            },
+"CVE-2017-4903": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4903/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi650-201703410-SG"
+            },
+"CVE-2017-4902": {
+                "Link": "https://www.cvedetails.com/cve/CVE-2017-4902/",
+                "Type": "Exec Code Overflow",
+                "CVSS Score": "7.2",
+                "Patches": "ESXi650-201703410-SG"
+            }
+            }
+
+}
+

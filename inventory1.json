@@ -1,0 +1,142 @@
+[
+  {
+    "Alert": "NULL",
+    "Command": "uname -a",
+    "Condition": "NULL",
+    "Instruction": "\nglobal var, version, sName, jReport\nvar = var.split(\" \")\nsName = var[1]\njReport[sName] = {}\nversion = var[2]\nvar=var[1]",
+    "Msg": "Getting name of server",
+    "Name": "Host Name",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "uname -a",
+    "Instruction": "\nglobal var\nvar = var.split(\" \")\nvar=var[2]",
+    "Condition": "NULL",
+    "Msg": "Getting version of server",
+    "Name": "Version",
+    "Parent": "NULL",
+    "Ver": "0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "cat /etc/passwd | sed 's/\\:[^:]*\\:[^:]*\\:[^:]*\\:/\\:/' | sed  's/\\:\\/.*//'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting System users and def.groups",
+    "Name": "System Users : DefaultGroup",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "esxcli system account list | sed 1,2d | sed 's/[ ]\\+/\\:/'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting ESXi users and note",
+    "Name": "ESXi User : Description",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": " esxcli system permission list | sed 1,2d | sed 's/[ ]\\{2,\\}\\+/\\:/g'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    if item[1] == 'false':\n     temp[item[0]]=item[2]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "getting ESXi users and note",
+    "Name": "ESXi User : Role",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "esxcli hardware clock get | sed 's/[TZ]/ /g'",
+    "Instruction": "\nglobal var\nvar=var[0:-1]",
+    "Condition": "NULL",
+    "Msg": "Getting system time",
+    "Name": "System time",
+    "Parent": "NULL",
+    "Ver": "6.0",
+    "VerM": "99"
+  },
+
+{
+    "Alert": "NULL",
+    "Command": "esxcli network ip interface list | sed 1d",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(':')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Getting ip interface list",
+    "Name": "IP Interface",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  },
+
+{
+    "Alert": "NULL",
+    "Command": "chkconfig -l | sed 's/ \\+/ /'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\nvar.remove('')\ntemp = {}\nfor item in var:\n    item = item.split(' ')\n    temp[item[0]]=item[1]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Looking for deamons",
+    "Name": "Deamons' status",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  },
+
+
+
+{
+    "Alert": "NULL",
+    "Command": "esxcli storage vmfs extent list | sed 2d",
+    "Instruction": "\nglobal var\ntemp={}\nvar=var.split('\\n')\nheader=var[0].split(' ')\ns=''\nwhile s in header: header.remove(s)\nheader.remove(header[1])\nheader.remove(header[1])\nheader.remove(header[3])\nheader.remove(header[4])\nitem=var[1].split(' ')\nwhile s in item: item.remove(s)\nfor unit in range (5):\n     temp[header[unit]]=item[unit]\nvar=temp",
+    "Condition": "NULL",
+    "Msg": "VMFS",
+    "Name": "VMFS",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  },
+
+{
+    "Alert": "NULL",
+    "Command": "esxcli network ip dns server list | sed 's/\\:/''/' | sed 's/\\,/''/'",
+    "Instruction": "\nglobal var\nvar=var[3:]\ntemp={}\nvar = var.split(' ')\ntemp = []\nfor item in var[1:]:\n    temp.append(item)\nvar = temp\nvar[-1]=var[-1][:-1]",
+    "Condition": "NULL",
+    "Msg": "DNS list",
+    "Name": "DNS list",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  },
+
+{
+    "Alert": "NULL",
+    "Command": "vim-cmd vmsvc/getallvms | sed 's/[ ]\\+/\\ /'",
+    "Instruction": "\nglobal var\ntemp={}\nvar=var.split('\\n')\nheader=var[0].split(' ')\ns=''\nwhile s in header: header.remove(s)\nheader.remove(header[4])\nitem=var[1].split(' ')\nwhile s in item: item.remove(s)\nitem.remove(item[2])\nfor unit in range (5):\n     temp[header[unit]]=item[unit]\nvar=temp",
+    "Condition": "NULL",
+    "Msg": "Getting all VMs names",
+    "Name": "All VMs",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  },
+  {
+    "Alert": "NULL",
+    "Command": "esxcfg-vswitch -l |sed ':a;N;$!ba;s/\\n\\n.*//g;s/ \\{2,\\}/:/g'",
+    "Instruction": "\nglobal var\nvar = var.split('\\n')\ndel var[-1]\nvar = [i.split(':') for i in var]\ntemp = {}\nfor item in var[1:]:\n temp[item[0]]={}\n for i in range(6):\n  temp[item[0]][var[0][i]] = item[i]\nvar = temp",
+    "Condition": "NULL",
+    "Msg": "Getting vSwitches parameters ",
+    "Name": "vSwitches",
+    "Parent": "NULL",
+    "Ver": "5",
+    "VerM": "99"
+  }
+
+]
