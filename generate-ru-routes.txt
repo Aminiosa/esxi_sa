@@ -1,0 +1,53 @@
+Скрипт для друга (администратора VPN-сервера).
+Запускать на Linux/сервере OpenVPN. Требуется: bash, curl, awk.
+
+Что делает: скачивает актуальный список российских подсетей и превращает его
+в маршруты OpenVPN, которые пускают российские IP МИМО VPN (напрямую).
+Заграничный трафик (Claude, Proton и т.д.) остаётся в туннеле.
+
+Как использовать:
+  1. Сохранить содержимое блока ниже в файл generate-ru-routes.sh
+  2. chmod +x generate-ru-routes.sh && ./generate-ru-routes.sh
+  3. Получится файл ru-split-tunnel.txt с маршрутами.
+  4. Вставить всё его содержимое В КОНЕЦ клиентского .ovpn профиля.
+  5. Отдать обновлённый .ovpn пользователю → переимпорт в OpenVPN Connect.
+
+Примечание: облачная 1С с российским хостингом попадёт в список автоматически.
+Если OpenVPN Connect не примет слишком много маршрутов — сделать на стороне
+сервера через route-up скрипт / поднять лимиты.
+
+=========================== generate-ru-routes.sh ===========================
+
+#!/usr/bin/env bash
+set -euo pipefail
+OUT="ru-split-tunnel.txt"
+SOURCES=(
+  "https://www.ipdeny.com/ipblocks/data/aggregated/ru-aggregated.zone"
+  "https://raw.githubusercontent.com/herrbischoff/country-ip-blocks/master/ipv4/ru.cidr"
+)
+TMP="$(mktemp)"; trap 'rm -f "$TMP"' EXIT
+got=""
+for url in "${SOURCES[@]}"; do
+  echo ">> Источник: $url"
+  if curl -fsSL --connect-timeout 20 "$url" -o "$TMP" && [ -s "$TMP" ]; then got="$url"; break; fi
+  echo "   не удалось, пробую следующий."
+done
+[ -z "$got" ] && { echo "ОШИБКА: список не скачался." >&2; exit 1; }
+echo ">> Получено из: $got"
+awk -F/ '
+function mask(p,  i,val,s){
+  s=""
+  for(i=0;i<4;i++){
+    if(p>=8){val=255;p-=8}
+    else if(p>0){val=256-2^(8-p);p=0}
+    else{val=0}
+    s=s (i>0?".":"") val
+  }
+  return s
+}
+NF==2 && $1 ~ /^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$/ && $2 ~ /^[0-9]+$/ {
+  print "route " $1 " " mask($2) " net_gateway"
+}' "$TMP" | sort -u > "$OUT"
+echo ">> Готово: $(wc -l < "$OUT" | tr -d ' ') маршрутов в $OUT"
+
+=============================================================================
