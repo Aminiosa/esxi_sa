@@ -24,7 +24,7 @@ persist-tun
 verb 3
 crl-verify crl.pem
 explicit-exit-notify
-
+push "max-routes 10000" 
 push "route 103.228.2.0 255.255.255.0 net_gateway"
 push "route 103.58.41.0 255.255.255.0 net_gateway"
 push "route 103.76.52.0 255.255.252.0 net_gateway"
